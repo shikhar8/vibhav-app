@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function check(){
+                var u=document.getElementById("u").value;
+                var p1=document.getElementById("p1").value;
+                var p2=document.getElementById("p2").value;
+                var ph=document.getElementById("phone").value;
+                if(u==""||p1==""||p2==""||ph=="")
+                {document.getElementById("f1").reset();
+                    window.alert("no field should be left blank");
+                    return false;
+                    
+                }
+                if(p1!=p2)
+                {document.getElementById("f1").reset();
+                    window.alert("password not matched");
+                    return false;
+                }
+                
+                if(ph[0]!='+'||ph[1]!='9'||ph[2]!='1')
+                {document.getElementById("f1").reset();
+                    window.alert("start with +91");
+                return false;
+                }
+                return true;
+                
+            }
+
+        </script>
+        <style>
+            .d1{
+                position: absolute;
+                top:0%;
+                left:0%;
+                right: 0%;;
+                background-color: blue;
+                height:10%;
+                text-align: right;
+                        }
+            .d2{
+                position: absolute;
+                top:10%;
+                left:0%;
+                width: 150px;
+                background-color:red;
+                height: 87%;
+                text-align: right;
+                padding: 10px;
+            }
+            .d3{
+                position: absolute;
+                top:10%;
+                right:0%;
+                width: 150px;
+                background-color:red;
+                height: 87%;
+                text-align: right;
+                padding: 10px;
+            }
+
+            form{
+                position: absolute;
+                left:500px;
+                top:200px;
+            }
+            table{
+                height: 300px;
+                width: 400px;
+            }
+            
+            table,th,td{
+                font-size: 20px;
+                border-style:solid;
+                border-width: 2px;
+                border-color: black;
+                padding: 5px;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            
+        </style>
+        <title>
+            login page
+        </title>
+    </head>
+    <body>
+        <div class="d1">
+            <h1>
+                hello there..!!
+            </h1>
+        </div>
+        <div class="d2">
+            adds here..!!;
+        </div>
+        <div class="d3">
+                adds here..!!;
+            </div>
+            
+            status:
+            {% if user.is_authenticated %}
+            logged in as {{user.username}}
+            :<a href="{% url 'vote' %}">click here to vote</a>
+            :<a href="{% url 'logout' %}">click here to logout</a>
+            {% else %}
+            not logged in
+            {% endif %}
+
+        
+        <form action="{% url 'registerr' %}" method="POST" id="f1">
+            {% csrf_token %}
+            <table border="1">
+            <tr><td>username(admn_number) </td><td>  <input type="text" name="username" id="u"></td></tr>
+            <tr><td>name</td><td>  <input type="text" name="name" id="name"></td></tr>
+            <tr><td>phone num</td><td>  <input type="text" name="phone_num" id="phone"></td></tr>
+            <tr><td>password </td><td>  <input type="password" name="password" id="p1"></td></tr>
+            <tr><td>confirm password</td> <td><input type="password" id="p2"></td></tr>
+            <tr><td colspan="2"><input type="submit" onclick="return check()"></td></tr>
+        </table>
+        </form>
+    </body>
+</html>

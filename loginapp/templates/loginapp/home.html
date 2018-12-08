@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        var z=x;
+        if(z==1)
+        {
+            window.alert("account registered succesfully ")
+        }
+
+        </script>
+        <title>
+            homepage
+        </title>
+    </head>
+    <body>
+        status:
+            {% if user.is_authenticated %}
+            logged in as {{user.username}}
+            <!--:<a href="{% url 'vote' %}">click here to vote</a>-->
+            :<a href="{% url 'logout' %}">click here to logout</a>
+            <!--<form action="{% url 'votepre' %}">
+                <input type="submit" name="votepre" value="vote">
+            </form>-->
+            <br/>
+            <a href="{% url 'profile' %}">check profile</a>
+<br/>
+            <br>
+            <a href="{% url 'e1' %}">event1</a>
+            <br>
+            <a href="{% url 'e2' %}">event2</a>
+            <br>
+            <a href="{% url 'e3' %}">event3</a>
+            <br>
+            <a href="{% url 'e4' %}">event4</a>
+            <br>
+            <a href="{% url 'e5' %}">event5</a>
+
+            
+            {% else %}
+            not logged in
+
+        <form action="{% url 'loginx' %}">
+            <input type="submit" name="signup" value="signup">
+        </form>
+        <form action="{% url 'login' %}">
+            <input type="submit" name="login" value="login">
+        </form>
+        {% endif %}
+    </body>
+</html>

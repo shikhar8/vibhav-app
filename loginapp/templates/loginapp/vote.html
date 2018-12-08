@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        function check(){
+
+        var a=int(document.getElementById("v").value);
+        if(a!=1||a!=2)
+        {
+            {document.getElementById("f1").reset();
+                    window.alert("no field should be left blank");
+                    return false;
+        }
+        return true;
+        }
+        </script>
+        <title>
+            just checking 
+        </title>
+    </head>
+    <body>
+        {%  if user.is_authenticated %}
+        hello {{user.username}}
+        {% endif %}
+        <form action="{% url 'votecol'  %}" method="POST" id="f1">
+            {% csrf_token %}
+            give your vote(between 1 and 2)<br>
+            <input type="text" name="voteb" id="v"><br>
+            <input type="submit" onclick="return check() " >
+
+        </form>
+    </body>
+</html>

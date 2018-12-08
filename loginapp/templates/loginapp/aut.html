@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>
+            confirm phone number
+        </title>
+    </head>
+    <body>
+         
+        <form action="{% url 'confirmm' %}" method="POST">
+            {% csrf_token %}
+            enter otp <br>
+             <input type="text" name="otp"><br>
+             <input type="hidden" name="phone" value="{{c}}">
+                    <input type="submit">
+                       </form>
+    </body>
+</html>

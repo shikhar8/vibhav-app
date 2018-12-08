@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>event 1</title>
+    </head>
+    <body>
+        <h1>
+            EVENT1
+        </h1>
+        details about event 1 here..!!
+        <br/>
+        <br/>
+                {% ifequal c '0' %}
+        <form action="{% url 'r1' %}">
+                <input type="submit" name="reg1" value="register">
+            </form>
+            {% else %}
+           <br/>
+            already registered
+            {%endifequal%}
+            {% if e != '0' %}
+            <form action="{% url 'o1' %}" method="POST" id="f1">
+                    {% csrf_token %}    
+                <tr><td>enter passcode </td><td>  <input type="password" name="password" id="p1"></td></tr>
+                <input type="submit" name="otp1" value="enter passcode">
+                </form>
+            {%endif%}
+            note:-passcode to be provided during the event.
+                
+
+
+
+    </body>
+    </html>
